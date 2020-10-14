@@ -18,7 +18,7 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
         private readonly List<GamePerson> gamePerson = new List<GamePerson>();
         private Random rng = new Random();
         private TimeSpan TimeLeft = new TimeSpan();
-        private string TimeOutMessage, TimeOutMessage2;
+        private string EndGameMessage, EndGameMessage2, EndGameMessageCSS;
         private bool GameEnded = false;
         private int hours = 0;
         private int min = 0;
@@ -32,6 +32,7 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
             NoTimeCSS = "btn btn-primary", 
             TenMinutesCSS = "btn btn-primary";
         private string TimeCss;
+        private bool IsSubmited = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -139,7 +140,7 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
         private async Task Timer()
         {
-            while (TimeLeft > new TimeSpan())
+            while (TimeLeft > new TimeSpan() && IsSubmited == false)
             {
                 await Task.Delay(1000);
                 TimeLeft = TimeLeft.Subtract(new TimeSpan(0, 0, 1));
@@ -149,7 +150,7 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
                 }
                 StateHasChanged();
             }
-            if (isTimePicked != false)
+            if (isTimePicked != false && IsSubmited == false)
             {
                 await AfterTime();
                 StateHasChanged();
@@ -158,8 +159,9 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
         private Task AfterTime()
         {
-            TimeOutMessage = "Nespėjot laiku išsirinkti komandos!!";
-            TimeOutMessage2 = "Susivieniję paklydėliai Jus išmetė iš bunkerio!!";
+            EndGameMessage = "Nespėjot laiku išsirinkti komandos!!";
+            EndGameMessage2 = "Susivieniję paklydėliai Jus išmetė iš bunkerio!!";
+            EndGameMessageCSS = "color:red";
             isGameStarted = false;
             GameEnded = true;
             return Task.CompletedTask;
@@ -168,6 +170,15 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
         private void NewGame()
         {
             NavigationManager.NavigateTo("refreshSFWlt");
+        }
+
+        private void SubmitChoises()
+        {
+            isGameStarted = false;
+            GameEnded = true;
+            IsSubmited = true;
+            EndGameMessage = "Sveikinam išsirinkus savo naujus draugus!!!";
+            EndGameMessageCSS = "color:blue";
         }
     }
 }

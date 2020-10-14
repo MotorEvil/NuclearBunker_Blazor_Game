@@ -20,7 +20,7 @@ else
 {
     <button class="btn badge-primary" @onclick="NewGame">Naujas žaidimas</button>
 }
-@if (isTimePicked != false)
+@if (isTimePicked != false && IsSubmited == false)
 {
     <h3 style="@TimeCss">@TimeLeft</h3>
 }
@@ -53,11 +53,15 @@ else
         }
     </table>
     <h3>Pasirinkta: @gamePerson.Count(person => person.IsPicked) / 5</h3>
+    if (gamePerson.Count(person => person.IsPicked) == 5)
+    {
+        <button class="btn btn-info" @onclick="SubmitChoises">Patvirtinti komandą</button>
+    }
 }
 else
 {
-    <h3 style="color:red">@TimeOutMessage</h3>
-    <h3 style="color:red">@TimeOutMessage2</h3>
+    <h3 style="@EndGameMessageCSS">@EndGameMessage</h3>
+    <h3 style="@EndGameMessageCSS">@EndGameMessage2</h3>
 }
 
 
