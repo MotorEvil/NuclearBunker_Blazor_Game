@@ -1,0 +1,74 @@
+﻿@page "/Test"
+@*<h3>@displaytext</h3>
+
+    @code {
+        static int str = 10;
+
+        string displaytext = "";
+
+        protected override Task OnInitializedAsync()
+        {
+            return base.OnInitializedAsync();
+        }
+
+        async Task Timer(int timeM, int timeH, int timeS)
+        {
+            TimeSpan TimeLeft = new TimeSpan(timeH, timeM, timeS);
+
+            while (TimeLeft > new TimeSpan())
+            {
+                await Task.Delay(1000);
+                TimeLeft = TimeLeft.Subtract(new TimeSpan(0, 0, 1));
+                StateHasChanged();
+            }
+            await AfterTime();
+            StateHasChanged();
+        }
+
+        Task AfterTime()
+        {
+            displaytext = "Time expired";
+            return Task.CompletedTask;
+        }
+    }
+*@
+
+<h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>
+            @if (todo.IsDone == false)
+            {
+                <input type="checkbox" @bind="todo.IsDone" />
+
+                <input @bind="todo.Title" />
+            }
+            else
+            {
+                <input type="checkbox" @bind="todo.IsDone" />
+
+                <input style="background-color:burlywood" @bind="@todo.Title" />
+            }
+        </li>
+
+    }
+</ul>
+
+<input placeholder="Something todo" @bind="newTodo" />
+<button @onclick="AddTodo">Add todo</button>
+
+@code {
+    private IList<TestTodo> todos = new List<TestTodo>();
+    private string newTodo;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new TestTodo { Title = newTodo });
+            newTodo = string.Empty;
+        }
+    }
+}

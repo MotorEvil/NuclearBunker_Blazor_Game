@@ -1,0 +1,63 @@
+﻿@page "/SFW_Lt"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Darbui saugi versija</h3>
+
+@if (isGameStarted != true && GameEnded == false)
+{
+    <button class="@OneMinuteCSS" @onclick="@OneMinute">1 min.</button>
+    <button class="@FiveMinutesCSS" @onclick="@FiveMinutes">5 min.</button>
+    <button class="@TenMinutesCSS" @onclick="@TenMinutes">10 min.</button>
+    <button class="@FiveSecCSS" @onclick="@FiveSeconds">5 sec.</button>
+    <button class="@NoTimeCSS" @onclick="@NoTime">Be laiko</button>
+    if (isTimePicked == true || NoTimeIsPicked == true)
+    {
+        <button class="btn btn-danger" @onclick="Game">Pradėti</button>
+    }
+}
+else
+{
+    <button class="btn badge-primary" @onclick="NewGame">Naujas žaidimas</button>
+}
+@if (isTimePicked != false)
+{
+    <h3 style="@TimeCss">@TimeLeft</h3>
+}
+
+@if (isGameStarted == true)
+{
+    <table style="width:100%">
+        @foreach (var item in gamePerson)
+        {
+            <tr>
+                <td>
+                    @if (gamePerson.Count(person => person.IsPicked) < 5)
+                    {
+                        <input type="checkbox" @bind="item.IsPicked" />
+                    }
+                    else if (gamePerson.Count(person => person.IsPicked) == 5 && item.IsPicked == true)
+                    {
+                        <input type="checkbox" @bind="item.IsPicked" />
+                    }
+                </td>
+                @if (item.IsPicked == false)
+                {
+                    <td>@item.FullGamePerson</td>
+                }
+                else
+                {
+                    <td style="background-color:aquamarine">@item.FullGamePerson</td>
+                }
+            </tr>
+        }
+    </table>
+    <h3>Pasirinkta: @gamePerson.Count(person => person.IsPicked) / 5</h3>
+}
+else
+{
+    <h3 style="color:red">@TimeOutMessage</h3>
+    <h3 style="color:red">@TimeOutMessage2</h3>
+}
+
+
