@@ -4,13 +4,6 @@
 
 <h3>Darbui saugi versija</h3>
 
-@foreach (var item in gender)
-{
-    <ul>
-        <li>@item</li>
-    </ul>
-}
-
 @if (isGameStarted != true && GameEnded == false)
 {
     <button class="@OneMinuteCSS" @onclick="@OneMinute">1 min.</button>
