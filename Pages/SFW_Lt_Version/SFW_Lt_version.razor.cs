@@ -16,7 +16,6 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
         private readonly List<PersonLt> personList = new List<PersonLt>();
         private readonly List<AbilitieLt> abilitiesList = new List<AbilitieLt>();
         private readonly List<GamePerson> gamePerson = new List<GamePerson>();
-        private readonly List<string> gender = new List<string>();
         private Random rng = new Random();
         private TimeSpan TimeLeft = new TimeSpan();
         private string EndGameMessage, EndGameMessage2, EndGameMessageCSS, TimeCss;
@@ -49,11 +48,6 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
                     Name = person.Name,
                     Gender = person.Gender
                 });
-            }
-
-            foreach (var item in persons)
-            {
-                gender.Add(item.Gender);
             }
         }
 
