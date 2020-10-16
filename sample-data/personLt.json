@@ -1,149 +1,198 @@
 ﻿[
   {
-    "name": "Archeologas"
+    "name": "Archeologas",
+    "Gender": "Male"
   },
   {
-    "name": "Architektas"
+    "name": "Architektas",
+    "Gender": "Male"
   },
   {
-    "name": "Automobilių pardavėjas"
+    "name": "Automobilių pardavėjas",
+    "Gender": "Male"
   },
   {
-    "name": "Benamis"
+    "name": "Benamis",
+    "Gender": "Male"
   },
   {
-    "name": "Bitininkas"
+    "name": "Bitininkas",
+    "Gender": "Male"
   },
   {
-    "name": "Botanikas"
+    "name": "Botanikas",
+    "Gender": "Male"
   },
   {
-    "name": "Daktaras"
+    "name": "Daktaras",
+    "Gender": "Male"
   },
   {
-    "name": "Dantistas"
+    "name": "Dantistas",
+    "Gender": "Male"
   },
   {
-    "name": "Ekstrasesnsas"
+    "name": "Ekstrasesnsas",
+    "Gender": "Male"
   },
   {
-    "name": "Elektrikas"
+    "name": "Elektrikas",
+    "Gender": "Male"
   },
   {
-    "name": "Fotografas"
+    "name": "Fotografas",
+    "Gender": "Male"
   },
   {
-    "name": "Gaisrininkas"
+    "name": "Gaisrininkas",
+    "Gender": "Male"
   },
   {
-    "name": "Gatvės artistas"
+    "name": "Gatvės artistas",
+    "Gender": "Male"
   },
   {
-    "name": "įdomiausias žmogus pasaulyje"
+    "name": "įdomiausias žmogus pasaulyje",
+    "Gender": "Male"
   },
   {
-    "name": "jūrų pėstinikas"
+    "name": "jūrų pėstinikas",
+    "Gender": "Male"
   },
   {
-    "name": "klounas"
+    "name": "klounas",
+    "Gender": "Male"
   },
   {
-    "name": "konditeris"
+    "name": "konditeris",
+    "Gender": "Male"
   },
   {
-    "name": "kosmetologas"
+    "name": "kosmetologas",
+    "Gender": "Male"
   },
   {
-    "name": "krepšininkas"
+    "name": "krepšininkas",
+    "Gender": "Male"
   },
   {
-    "name": "kultūristas"
+    "name": "kultūristas",
+    "Gender": "Male"
   },
   {
-    "name": "magas"
+    "name": "magas",
+    "Gender": "Male"
   },
   {
-    "name": "maisto kritikas"
+    "name": "maisto kritikas",
+    "Gender": "Male"
   },
   {
-    "name": "maldininkas"
+    "name": "maldininkas",
+    "Gender": "Male"
   },
   {
-    "name": "Masažistas"
+    "name": "Masažistas",
+    "Gender": "Male"
   },
   {
-    "name": "mechanikas"
+    "name": "mechanikas",
+    "Gender": "Male"
   },
   {
-    "name": "medkirtys"
+    "name": "medkirtys",
+    "Gender": "Male"
   },
   {
-    "name": "mokyklos virėjas"
+    "name": "mokyklos virėja",
+    "Gender": "Female"
   },
   {
-    "name": "mokytojas"
+    "name": "mokytojas",
+    "Gender": "Male"
   },
   {
-    "name": "mokslininkas"
+    "name": "mokslininkas",
+    "Gender": "Male"
   },
   {
-    "name": "nėščia moteris"
+    "name": "nėščia moteris",
+    "Gender": "Female"
   },
   {
-    "name": "nutukęs vaikas"
+    "name": "nutukęs vaikas",
+    "Gender": "Male"
   },
   {
-    "name": "picų išvežiotojas"
+    "name": "picų išvežiotojas",
+    "Gender": "Male"
   },
   {
-    "name": "pilvakalbis"
+    "name": "pilvakalbis",
+    "Gender": "Male"
   },
   {
-    "name": "policininkas"
+    "name": "policininkas",
+    "Gender": "Male"
   },
   {
-    "name": "programuotojas"
+    "name": "programuotojas",
+    "Gender": "Male"
   },
   {
-    "name": "psichologas"
+    "name": "psichologas",
+    "Gender": "Male"
   },
   {
-    "name": "samdomas žudikas"
+    "name": "samdomas žudikas",
+    "Gender": "Male"
   },
   {
-    "name": "septynmetis našlaitis"
+    "name": "septynmetis našlaitis",
+    "Gender": "Male"
   },
   {
-    "name": "seselė"
+    "name": "seselė",
+    "Gender": "Female"
   },
   {
-    "name": "statybininkas"
+    "name": "statybininkas",
+    "Gender": "Male"
   },
   {
-    "name": "stipriausias žmogus pasaulyje"
+    "name": "stipriausias žmogus pasaulyje",
+    "Gender": "Male"
   },
   {
-    "name": "sumo imtynininkas"
+    "name": "sumo imtynininkas",
+    "Gender": "Male"
   },
   {
-    "name": "suvirintojas"
+    "name": "suvirintojas",
+    "Gender": "Male"
   },
   {
-    "name": "tavo senelis"
+    "name": "tavo senelis",
+    "Gender": "Male"
   },
   {
-    "name": "teistas žudikas"
+    "name": "teistas žudikas",
+    "Gender": "Male"
   },
   {
-    "name": "tolimųjų reisų vairuotojas"
+    "name": "tolimųjų reisų vairuotojas",
+    "Gender": "Male"
   },
   {
-    "name": "vaiduoklis"
+    "name": "vaiduoklis",
+    "Gender": "Male"
   },
   {
-    "name": "vienišas tėvas"
+    "name": "vienišas tėvas",
+    "Gender": "Male"
   },
   {
-    "name": "virėjas"
+    "name": "virėjas",
+    "Gender": "Male"
   }
 ]
