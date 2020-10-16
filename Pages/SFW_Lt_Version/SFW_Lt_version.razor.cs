@@ -13,26 +13,21 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
         private AbilitieLt[] abilities;
         private PersonLt[] persons;
 
-        private readonly List<string> personList = new List<string>();
-        private readonly List<string> abilitiesList = new List<string>();
+        private readonly List<PersonLt> personList = new List<PersonLt>();
+        private readonly List<AbilitieLt> abilitiesList = new List<AbilitieLt>();
         private readonly List<GamePerson> gamePerson = new List<GamePerson>();
+        private readonly List<string> gender = new List<string>();
         private Random rng = new Random();
         private TimeSpan TimeLeft = new TimeSpan();
-        private string EndGameMessage, EndGameMessage2, EndGameMessageCSS;
-        private bool GameEnded = false;
-        private int hours = 0;
-        private int min = 0;
-        private int sec = 0;
-        private bool isTimePicked = false;
-        private bool isGameStarted = false;
-        private bool NoTimeIsPicked = false;
-        private string FiveSecCSS = "btn btn-primary", 
+        private string EndGameMessage, EndGameMessage2, EndGameMessageCSS, TimeCss;
+        private bool GameEnded, isTimePicked, isGameStarted, NoTimeIsPicked, IsSubmited;
+        private int hours, min, sec;
+
+        private string FiveSecCSS = "btn btn-primary",
             OneMinuteCSS = "btn btn-primary",
             FiveMinutesCSS = "btn btn-primary",
-            NoTimeCSS = "btn btn-primary", 
+            NoTimeCSS = "btn btn-primary",
             TenMinutesCSS = "btn btn-primary";
-        private string TimeCss;
-        private bool IsSubmited = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -41,12 +36,24 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
             foreach (var abilitie in abilities)
             {
-                abilitiesList.Add(abilitie.Abilitie);
+                abilitiesList.Add(new AbilitieLt()
+                {
+                    Abilitie = abilitie.Abilitie
+                });
             }
 
             foreach (var person in persons)
             {
-                personList.Add(person.Name);
+                personList.Add(new PersonLt()
+                {
+                    Name = person.Name,
+                    Gender = person.Gender
+                });
+            }
+
+            foreach (var item in persons)
+            {
+                gender.Add(item.Gender);
             }
         }
 
@@ -58,7 +65,7 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
             isTimePicked = true;
             FiveSecCSS = "btn btn-primary";
             OneMinuteCSS = "btn btn-primary";
-            FiveMinutesCSS = "btn btn-primary"; 
+            FiveMinutesCSS = "btn btn-primary";
             TenMinutesCSS = "btn btn-info";
             NoTimeCSS = "btn btn-primary";
             TimeLeft = new TimeSpan(hours, min, sec);
@@ -124,16 +131,22 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
             while (gamePerson.Count() < 10)
             {
-                int Personindex = rng.Next(0, personList.Count() - 1);
+                int PersonIndex = rng.Next(0, personList.Count() - 1);
                 int AbilitieIndex = rng.Next(0, abilitiesList.Count() - 1);
+                string which = "kuris";
+                string Female = "Female";
 
-                string person = $"{personList[Personindex].ToUpper()}, kuris {abilitiesList[AbilitieIndex]}.";
+                if (personList[PersonIndex].Gender == Female)
+                {
+                    which = "kuri";
+                }
+                string person = $"{personList[PersonIndex].Name.ToUpper()}, {which} {abilitiesList[AbilitieIndex].Abilitie}.";
                 gamePerson.Add(new GamePerson()
                 {
                     FullGamePerson = person
                 });
 
-                personList.RemoveAt(Personindex);
+                personList.RemoveAt(PersonIndex);
                 abilitiesList.RemoveAt(AbilitieIndex);
             }
         }
