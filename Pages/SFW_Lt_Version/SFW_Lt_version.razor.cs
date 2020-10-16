@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using NuclearWinter.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -10,12 +9,6 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 {
     public partial class SFW_Lt_version : ComponentBase
     {
-        private AbilitieLt[] abilities;
-        private PersonLt[] persons;
-
-        private readonly List<PersonLt> personList = new List<PersonLt>();
-        private readonly List<AbilitieLt> abilitiesList = new List<AbilitieLt>();
-        private readonly List<GamePerson> gamePerson = new List<GamePerson>();
         private Random rng = new Random();
         private TimeSpan TimeLeft = new TimeSpan();
         private string EndGameMessage, EndGameMessage2, EndGameMessageCSS, TimeCss;
@@ -30,20 +23,20 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
         protected override async Task OnInitializedAsync()
         {
-            abilities = await Http.GetFromJsonAsync<AbilitieLt[]>("sample-data/AbilitiesLt.json");
-            persons = await Http.GetFromJsonAsync<PersonLt[]>("sample-data/personLt.json");
+            context.abilitiesLt = await Http.GetFromJsonAsync<AbilitieLt[]>("sample-data/AbilitiesLt.json");
+            context.personsLt = await Http.GetFromJsonAsync<PersonLt[]>("sample-data/personLt.json");
 
-            foreach (var abilitie in abilities)
+            foreach (var abilitie in context.abilitiesLt)
             {
-                abilitiesList.Add(new AbilitieLt()
+                context.abilitiesList.Add(new AbilitieLt()
                 {
                     Abilitie = abilitie.Abilitie
                 });
             }
 
-            foreach (var person in persons)
+            foreach (var person in context.personsLt)
             {
-                personList.Add(new PersonLt()
+                context.personList.Add(new PersonLt()
                 {
                     Name = person.Name,
                     Gender = person.Gender
@@ -123,25 +116,25 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
             Timer();
             isGameStarted = true;
 
-            while (gamePerson.Count() < 10)
+            while (context.gamePerson.Count() < 10)
             {
-                int PersonIndex = rng.Next(0, personList.Count() - 1);
-                int AbilitieIndex = rng.Next(0, abilitiesList.Count() - 1);
+                int PersonIndex = rng.Next(0, context.personList.Count() - 1);
+                int AbilitieIndex = rng.Next(0, context.abilitiesList.Count() - 1);
                 string which = "kuris";
                 string Female = "Female";
 
-                if (personList[PersonIndex].Gender == Female)
+                if (context.personList[PersonIndex].Gender == Female)
                 {
                     which = "kuri";
                 }
-                string person = $"{personList[PersonIndex].Name.ToUpper()}, {which} {abilitiesList[AbilitieIndex].Abilitie}.";
-                gamePerson.Add(new GamePerson()
+                string person = $"{context.personList[PersonIndex].Name.ToUpper()}, {which} {context.abilitiesList[AbilitieIndex].Abilitie}.";
+                context.gamePerson.Add(new GamePerson()
                 {
                     FullGamePerson = person
                 });
 
-                personList.RemoveAt(PersonIndex);
-                abilitiesList.RemoveAt(AbilitieIndex);
+                context.personList.RemoveAt(PersonIndex);
+                context.abilitiesList.RemoveAt(AbilitieIndex);
             }
         }
 
@@ -176,6 +169,11 @@ namespace NuclearWinter.Pages.SFW_Lt_Version
 
         private void NewGame()
         {
+            Array.Clear(context.abilitiesLt, 0, context.abilitiesLt.Length);
+            Array.Clear(context.personsLt, 0, context.personsLt.Length);
+            context.gamePerson.Clear();
+            context.abilitiesList.Clear();
+            context.personList.Clear();
             NavigationManager.NavigateTo("refreshSFWlt");
         }
 

@@ -1,4 +1,4 @@
-﻿namespace NuclearWinter.Pages.SFW_Lt_Version
+﻿namespace NuclearWinter.Models
 {
     public class GamePerson
     {
